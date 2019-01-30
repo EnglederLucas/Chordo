@@ -7,6 +7,8 @@ const htmlPdf = require('html-pdf');
 var chordMagic = require('chord-magic')
 var DomParser = require('dom-parser');
 var xml = require('xmlserializer');
+const tmp = require('tmp');
+const path = require('path');
 var parser = new DomParser();
 
 const router = express.Router();
@@ -14,31 +16,31 @@ var cChords;
 
 router.post('/chords', (req, res) => {
     // console.log(req.body.link);
+    var fileName = null;
+
+
     scraperUG.get(req.body.link, (error, chords) => {
         if(error)
             console.log(error);
         else {
              cChords = chords;
-             processText(cChords, {transposed: false});
+
+             fileName = processText(cChords, {transposed: false});
         }
     });
 
-    var filePath = "./server/chordFiles/cChords.pdf";
-
-    var listener = (curr, prev) => {res.download(filePath);
-                                    console.log("File is there");};
+    fileName ="b";
                                     
- 
-
-    fs.watchFile(filePath, listener);
+    res.send({file: fileName}); 
 });
 
 router.get('/downloadChords', (req,res) => {
-    res.download("./server/chordFiles/cChords.pdf");
-});
+    console.log("download");
+    res.download(req.body.fileName);
+}); 
 
 function processText (chordPage, options){
-    var text = "<pre>" + chordPage.content.text + "</pre>";
+    var text = "<div>" + chordPage.content.text + "</div>";
 
     text = replaceAll(text, "[ch]" , '<span class="chord">')
     text = replaceAll(text, "[/ch]" , '</span>')
@@ -46,7 +48,7 @@ function processText (chordPage, options){
     text = replaceAll(text, "]" , '</span>')
 
     text = `<!DOCTYPE html><html><head><meta charset="utf-8" /><link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> </head><body><h1> ${chordPage.name} - ${chordPage.artist}</h1>` + text;
-    text += '</body><style>.chord{color: coral;font-weight:bold;} body{font-family: "Nunito", sans-serif;</style>'
+    text += '</body><style>.chord{color: coral;font-weight:bold;} div{font-family: "Nunito", sans-serif; white-space: pre; font-size: 0.5em;}</style>'
     text += '</html>';
 
     if(options.transposed){
@@ -78,11 +80,23 @@ function processText (chordPage, options){
     }
 
     var options = { };
+    var filePath;
      
-    htmlPdf.create(text, options).toFile('./server/chordFiles/cChords.pdf', function(err, res) {
-      if (err) return console.log(err);
-      console.log(res); // { filename: '/app/businesscard.pdf' }
-    });
+    tmp.tmpName(function _tempNameGenerated(err, path) {
+        if (err) throw err;
+     
+
+        htmlPdf.create(text, options).toFile(path + ".pdf", function(err, res) {
+            if (err) return console.log(err);
+            console.log(res); // { filename: '/app/businesscard.pdf' }
+        });
+
+        console.log('Created temporary filename: ', path);
+        filePath = path;
+    });    
+
+    return filePath;
+
 }
 
 function replaceAll(str, find, replace) {

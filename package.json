@@ -33,6 +33,7 @@
     "html-pdf": "^2.2.0",
     "markdown-pdf": "^9.0.0",
     "npm": "^6.7.0",
+    "tmp": "0.0.33",
     "ultimate-guitar-scraper": "^1.1.1",
     "xmlserializer": "^0.6.1"
   }
