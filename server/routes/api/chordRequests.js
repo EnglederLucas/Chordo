@@ -13,6 +13,9 @@ var parser = new DomParser();
 
 const router = express.Router();
 var cChords;
+var filePath;
+
+
 
 router.post('/chords', (req, res) => {
     // console.log(req.body.link);
@@ -24,19 +27,21 @@ router.post('/chords', (req, res) => {
             console.log(error);
         else {
              cChords = chords;
+             text = processText(cChords, {transposed: false});
 
-             fileName = processText(cChords, {transposed: false});
+     
+            req.session.currentChords = htmlPdf.create(text, options).toBuffer(function(err, res) {
+                if (err) return console.log(err);
+                console.log(res); // { filename: '/app/businesscard.pdf' }
+            });
         }
     });
-
-    fileName ="b";
-                                    
-    res.send({file: fileName}); 
 });
 
-router.get('/downloadChords', (req,res) => {
-    console.log("download");
-    res.download(req.body.fileName);
+router.get('/downloadChords/:id', (req,res) => {
+    console.log("download" + req.body.fileName);
+    // res.download(req.body.fileName);
+    res.download(req.body.fileName.toString(), 'chords.pdf');
 }); 
 
 function processText (chordPage, options){
@@ -79,24 +84,7 @@ function processText (chordPage, options){
         // console.log(text);
     }
 
-    var options = { };
-    var filePath;
-     
-    tmp.tmpName(function _tempNameGenerated(err, path) {
-        if (err) throw err;
-     
-
-        htmlPdf.create(text, options).toFile(path + ".pdf", function(err, res) {
-            if (err) return console.log(err);
-            console.log(res); // { filename: '/app/businesscard.pdf' }
-        });
-
-        console.log('Created temporary filename: ', path);
-        filePath = path;
-    });    
-
-    return filePath;
-
+    return text;
 }
 
 function replaceAll(str, find, replace) {

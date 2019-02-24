@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <input type="url" id="chord-link" placeholder="Ultimate Guitar Link">   
+    <button onclick="putChords();">Get Chords</button>   
+    <button onclick="downloadChords();">Download</button>
+</body>
+<script>
+    function putChords(){
+        const url = chord-link.
+        alert();
+
+        return axios.post(api + "chords", {
+            link: url
+        })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((error) => {
+            if(error)
+            {
+                // eslint-disable-next-line no-console
+                console.log(error.response);
+            }
+        });
+    }
+
+    function downloadChords (file) {
+        axios.get('http://localhost:5000/api/downloadChords', {
+            fileName: file
+        })
+        .catch((error) => {
+            if(error)
+            {
+                // eslint-disable-next-line no-console
+                console.log(error.response);
+            }
+        })
+    }
+}
+</script>
+</html>
