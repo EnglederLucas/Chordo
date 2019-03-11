@@ -20,22 +20,34 @@ var filePath;
 router.post('/chords', (req, res) => {
     // console.log(req.body.link);
     var fileName = null;
-
+    console.log(req.body.link);
 
     scraperUG.get(req.body.link, (error, chords) => {
         if(error)
             console.log(error);
         else {
-             cChords = chords;
+             cChords = chords;              
              text = processText(cChords, {transposed: false});
+             options = {};
 
      
-            req.session.currentChords = htmlPdf.create(text, options).toBuffer(function(err, res) {
-                if (err) return console.log(err);
-                console.log(res); // { filename: '/app/businesscard.pdf' }
+            result = htmlPdf.create(text, options).toStream(function(err, stream) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.setHeader('Content-type', 'application/pdf');
+                    stream.pipe(res)
+                }
             });
+
+            console.log("Result");
+
+            // res.setHeader('Content-Type', 'application/pdf');
+            // res.send(result);
         }
     });
+
+    console.log("Finished");
 });
 
 router.get('/downloadChords/:id', (req,res) => {

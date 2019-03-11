@@ -2,7 +2,6 @@
     <div>
         <input type="url" id="chord-link" placeholder="Ultimate Guitar Link" v-model="link">   
         <button v-on:click="getChordsFromLink">Get Chords</button>   
-        <a v-bind:href="'http://localhost:5000/api/downloadChords/' + this.fileID" class=".button">Download</a>
     </div>
 </template>
 
