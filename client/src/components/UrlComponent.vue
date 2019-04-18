@@ -1,6 +1,7 @@
 <template>
     <div>
         <input type="url" id="chord-link" placeholder="Ultimate Guitar Link" v-model="link">   
+        <button>Edit</button>   
         <button v-on:click="getChordsFromLink">Get Chords</button>   
     </div>
 </template>
@@ -25,7 +26,6 @@ export default {
     methods: {
         async getChordsFromLink() {
             ChordService.putChords(this.link).then((data) => {
-                alert("Data VUE" + data.file);
                 this.fileID = data.file;
             });
 
@@ -33,7 +33,7 @@ export default {
         },
         async downloadChords() {
             // await ChordService.downloadChords(this.fileID);
-            alert("before download " + this.fileID + "type" + typeof(this.fileID))
+            //alert("before download " + this.fileID + "type" + typeof(this.fileID))
 
             axios.get('http://localhost:5000/api/downloadChords', {
                 params: {

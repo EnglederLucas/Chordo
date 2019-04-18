@@ -4,7 +4,6 @@ const scraperUG = require('ultimate-guitar-scraper');
 const transposer = require('chord-transposer');
 const fs = require('fs');
 const htmlPdf = require('html-pdf');
-var chordMagic = require('chord-magic')
 var DomParser = require('dom-parser');
 var xml = require('xmlserializer');
 const tmp = require('tmp');
@@ -57,15 +56,17 @@ router.get('/downloadChords/:id', (req,res) => {
 }); 
 
 function processText (chordPage, options){
-    var text = "<div>" + chordPage.content.text + "</div>";
+    var text = "<div id='song'>" + chordPage.content.text + "</div>";
 
     text = replaceAll(text, "[ch]" , '<span class="chord">')
     text = replaceAll(text, "[/ch]" , '</span>')
     text = replaceAll(text, "[", '<span class="song_part">')
     text = replaceAll(text, "]" , '</span>')
 
-    text = `<!DOCTYPE html><html><head><meta charset="utf-8" /><link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> </head><body><h1> ${chordPage.name} - ${chordPage.artist}</h1>` + text;
-    text += '</body><style>.chord{color: coral;font-weight:bold;} div{font-family: "Nunito", sans-serif; white-space: pre; font-size: 0.5em;}</style>'
+    text = `<!DOCTYPE html><html><head><meta charset="utf-8" /><link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> </head><body><h1 id='headline'> ${chordPage.name} - ${chordPage.artist}</h1>` + text;
+    text += `<div id="rightside_bar"> </div>`;
+    text += `<div id="leftside_bar"> </div>`;
+    text += '</body><style>#song,#headline{margin-left:10%;} #leftside_bar{position: absolute; margin-right:5%; left:0px; top: 0px; width: 3%; height: 100%; background: coral; float: left;}#rightside_bar{position: absolute; right: 0px; top: 0px; width: 20%; height: 100%; background: coral; float: right;}.chord{color: coral;font-weight:bold;} .song_part{font-weight: bold; font-size:1em;} body{height: 100%; font-family: "Nunito", sans-serif; white-space: pre; font-size: 0.8em; } html{height:100%;}</style>'
     text += '</html>';
 
     if(options.transposed){

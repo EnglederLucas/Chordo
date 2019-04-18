@@ -2,16 +2,19 @@
   <div >
       <h1>Chordo</h1>
       <UrlComponent/>
+      <Editor/>
   </div>
 </template>
 
 <script>
 import UrlComponent from './UrlComponent.vue'
+import Editor from './Editor.vue'
 
 export default {
   name: 'Home',
   components: {
-    UrlComponent
+    UrlComponent,
+    Editor
   }
 }
 </script>
