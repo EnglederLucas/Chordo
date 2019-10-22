@@ -13,9 +13,10 @@ import { VueEditor } from "vue2-editor";
     components: {
        VueEditor
     },
+    props: ['defaultContent'],
     data() {
       return {
-        content: '<h2>Html Editor </h2>',
+        content: '<h2>Editor</h2>',
         customToolbar: [
             ['bold', 'italic', 'underline']
             ]
@@ -25,6 +26,10 @@ import { VueEditor } from "vue2-editor";
         setText(text)
         {
             this.content = text;
+        },
+        setDefaultContent()
+        {
+            this.content = this.defaulContent
         }
     },
 }
@@ -34,7 +39,6 @@ import { VueEditor } from "vue2-editor";
 div{
     margin-top:100px;
     height: 1000px;
-      font-family: 'Quicksand', sans-serif;
-
+    font-family: 'Quicksand', sans-serif;
 }
 </style>

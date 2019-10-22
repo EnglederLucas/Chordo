@@ -1,7 +1,7 @@
 <template>
     <div>
         <input type="url" id="chord-link" placeholder="Ultimate Guitar Link" v-model="link">   
-        <button>Edit</button>   
+        <button v-on:click="editChordsFromLink">Edit</button>   
         <button v-on:click="getChordsFromLink">Get Chords</button>   
     </div>
 </template>
@@ -20,7 +20,8 @@ export default {
     data: () => {
         return {
             link: '',
-            fileID: ''
+            fileID: '',
+            text: ''
         }
     },
     methods: {
@@ -30,6 +31,9 @@ export default {
             });
 
             // this.link = '';
+        },
+        async editChordsFromLink(){
+            ChordService.getChordText(this.link);
         },
         async downloadChords() {
             // await ChordService.downloadChords(this.fileID);

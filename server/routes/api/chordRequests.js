@@ -49,6 +49,23 @@ router.post('/chords', (req, res) => {
     console.log("Finished");
 });
 
+router.post('/chords_text', (req, res) => {
+    // console.log(req.body.link);
+    console.log("Chord Text");
+    console.log(req.body.link);
+
+    scraperUG.get(req.body.link, (error, chords) => {
+        if(error)
+            console.log(error);
+        else {
+            console.log(chords);
+        }
+    });
+
+    console.log("Got Text");
+});
+
+
 router.get('/downloadChords/:id', (req,res) => {
     console.log("download" + req.body.fileName);
     // res.download(req.body.fileName);

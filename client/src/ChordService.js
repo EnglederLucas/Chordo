@@ -25,6 +25,15 @@ class PostService {
         })
     }
 
+    static getChordText (url){
+        alert(url)            
+        axios.post('http://localhost:5000/api/chord_text', {
+            link: this.link
+        })
+        .catch((error) => {
+            if(error){console.log(error.response)}})
+    }
+
 }
 
 export default PostService;
