@@ -1,0 +1,66 @@
+{
+  "name": "chordo_server",
+  "version": "1.0.0",
+  "description": "A tool that takes links or files and creates uniform chord sheets",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./build/server.js",
+    "tsc": "tsc",
+    "tscw": "tsc -w",
+    "dev": "nodemon",
+    "debug": "npm run tsc & node --inspect ./build/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnglederLucas/Chordo.git"
+  },
+  "keywords": [
+    "chords",
+    "tabs",
+    "band",
+    "music"
+  ],
+  "author": "Engleder Lucas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EnglederLucas/Chordo/issues"
+  },
+  "homepage": "https://github.com/EnglederLucas/Chordo#readme",
+  "dependencies": {
+    "@tsed/logger": "^5.4.1",
+    "@types/passport": "^1.0.4",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.3",
+    "chord-magic": "^2.1.1",
+    "chord-transposer": "^2.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "joi": "^17.2.1",
+    "json5": "^0.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.0",
+    "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
+    "request": "^2.81.0",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.19.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/joi": "^14.3.4",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/mongoose": "^5.7.36",
+    "@types/mongoose-unique-validator": "^1.0.4",
+    "@types/multer": "^1.4.3",
+    "@types/passport-jwt": "^3.0.3"
+  }
+}
