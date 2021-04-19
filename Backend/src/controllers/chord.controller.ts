@@ -12,7 +12,7 @@ export class ChordController {
       }
 
       const cChords = chords;
-      // const text = processText(cChords, { transposed: false });
+      //const text = processText(cChords, { transposed: false });
       const options = {};
 
       return chords;
