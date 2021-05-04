@@ -1,0 +1,1 @@
+{"version":3,"file":"songbook.endpoint.js","sourceRoot":"","sources":["../../../../src/application/endpoints/songbook.endpoint.ts"],"names":[],"mappings":";;;;;;;;AAEA,uEAAkE;AAGlE,IAAa,gBAAgB,GAA7B,MAAa,gBAAgB;IAC3B,YAAoB,kBAAsC;QAAtC,uBAAkB,GAAlB,kBAAkB,CAAoB;IAAG,CAAC;CAC/D,CAAA;AAFY,gBAAgB;IAD5B,qBAAQ,CAAC,WAAW,CAAC;GACT,gBAAgB,CAE5B;AAFY,4CAAgB"}
