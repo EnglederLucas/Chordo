@@ -1,65 +1,54 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">Chordo</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+	<div class="container"><h1>Chordo</h1></div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue";
 
-export default Vue.extend({})
+// import OhVueIcon from "oh-vue-icons/dist/v3/icon.es"
+
+// import { FaFlag, RiZhihuFill } from "oh-vue-icons/icons"
+// OhVueIcon.add(FaFlag, RiZhihuFill)
+
+// Vue.component("VIcon", OhVueIcon)
+// import Heroicons from "@bytegem/vue-heroicons"
+// Vue.use(Heroicons)
+
+export default Vue.extend({});
 </script>
 
-<style>
+<style lang="scss">
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+	margin: 0 auto;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+	h1 {
+		font-size: 5em;
+		font-weight: bold;
+		font-family: "Jost";
+		color: var(--light);
+	}
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+	h1::after {
+		content: "";
+		background: radial-gradient(
+			rgba(var(--primary-rgb), 20%),
+			transparent 75%
+		);
+		width: 50%;
+		height: 50%;
+		position: absolute;
+		z-index: -1;
 
-.links {
-  padding-top: 15px;
+		border-radius: 50%;
+		filter: blur(30px);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 </style>

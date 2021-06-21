@@ -1,0 +1,105 @@
+:root {
+	--background: #141417;
+	--background-rgb: 20, 20, 23;
+
+	--bg: #141417;
+	--bg-rgb: 20, 20, 23;
+
+	--bg-secondary: #2b2b2e;
+	--bg-secondary-rgb: 43, 43, 46;
+
+	--dark: #141417;
+	--dark-rgb: 20, 20, 23;
+
+	--light: #fff;
+	--light-rgb: 255, 255, 255;
+
+	--primary: #25beb5;
+	--primary-rgb: 37, 190, 181;
+
+	--heading-1: 60px;
+	--heading-1: 42px;
+}
+
+@keyframes fade {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+/* Place Holder CSS */
+::-webkit-input-placeholder {
+	color: #000;
+	opacity: 0.5;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+	animation: fade 0.35s ease;
+}
+:-moz-placeholder {
+	color: #000;
+	opacity: 0.5;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+	animation: fade 0.35s ease;
+}
+::-moz-placeholder {
+	color: #000;
+	opacity: 0.5;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+	animation: fade 0.35s ease;
+}
+:-ms-input-placeholder {
+	color: #000;
+	opacity: 0.5;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+	animation: fade 0.35s ease;
+}
+
+/* Place Holder CSS for Focus */
+:hover::-webkit-input-placeholder {
+	opacity: 0.75;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+:hover:-moz-placeholder {
+	opacity: 0.75;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+:hover::-moz-placeholder {
+	opacity: 0.75;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+:hover:-ms-input-placeholder {
+	opacity: 0.75;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+
+/* Place Holder CSS for Focus */
+:focus::-webkit-input-placeholder {
+	opacity: 0;
+	-webkit-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+:focus:-moz-placeholder {
+	opacity: 0;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+:focus::-moz-placeholder {
+	opacity: 0;
+	-moz-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
+:focus:-ms-input-placeholder {
+	opacity: 0;
+	-ms-transition: opacity 0.35s ease-in-out;
+	transition: opacity 0.35s ease-in-out;
+}
